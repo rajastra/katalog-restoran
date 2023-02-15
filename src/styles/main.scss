@@ -62,13 +62,15 @@ body {
 
 .header {
   font-size: 1.4rem;
+  position: sticky;
+  top: 0;
   background-color: var(--bg-color);
   height: 9.6rem;
   padding: 0 5rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  position: relative;
+  z-index: 100;
 
   @media only screen and (max-width: 56.25em) {
     flex-direction: column;
@@ -140,14 +142,10 @@ body {
     grid-template-columns: repeat(auto-fit, minmax(35rem, 1fr));
     grid-gap: 7rem;
     justify-items: center;
-    padding: 3.2rem;
+    padding: 3vw;
 
     @media only screen and (max-width: 31.25em) {
-      padding: 2vw;
-    }
-
-    @media only screen and (max-width: 20em) {
-      padding: 0;
+      grid-template-columns: 1fr;
     }
   }
 
@@ -163,11 +161,6 @@ body {
 
     @media only screen and (max-width: 31.25em) {
       width: 100%;
-    }
-
-    @media only screen and (max-width: 20em) {
-      width: 80%;
-
     }
   }
 

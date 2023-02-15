@@ -2,21 +2,20 @@ import "regenerator-runtime";
 /* for async await transpile */
 import "../styles/main.scss";
 import data from "../DATA.json";
+import App from "./views/app";
 
-console.log("Hello Coders! :)");
-
-const toggleButon = document.querySelector(".toggle-button");
-const navbarLinks = document.querySelector(".main-nav");
-
-toggleButon.addEventListener("click", () => {
-  navbarLinks.classList.toggle("active");
-  toggleButon.classList.toggle("active");
+const app = new App({
+  button: document.querySelector("#hamburgerButton"),
+  drawer: document.querySelector("#navigationDrawer"),
+  content: document.querySelector("#mainContent"),
 });
 
+console.log(app);
+
+// content
 const exploreContainer = document.querySelector(".explore__container");
 
-const generateExplore = (explore) => {
-  return `
+const generateExplore = (explore) => `
   <div class="explore__card">
   <div class="explore__city-box">
     <p class="explore__city">${explore.city}</p>
@@ -32,12 +31,9 @@ const generateExplore = (explore) => {
   </div>
 </div>
   `;
-};
 
-const generateMarkup = (data) => {
-  const exploreMarkup = data.restaurants
-    .map((explore) => generateExplore(explore))
-    .join("");
+const generateMarkup = (dataParams) => {
+  const exploreMarkup = dataParams.restaurants.map((explore) => generateExplore(explore)).join("");
   exploreContainer.insertAdjacentHTML("beforeend", exploreMarkup);
 };
 

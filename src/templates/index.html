@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+  <link rel="icon" href="./images/favicon.png">
   <title>Restaurant Apps Starter Project</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -17,9 +17,9 @@
     <div class="nama-resto">
       <p class="nama-resto__main">Joe Apps</p>
       <p class="nama-resto__sub">semua yang anda butuhkan</p>
-    </div><a href="#" class="toggle-button"><span class="bar bar--1"></span><span class="bar bar--1"></span><span
-        class="bar bar--1"></span></a>
-    <nav class="main-nav">
+    </div><a href="#" class="toggle-button" id="hamburgerButton"><span class="bar bar--1"></span><span
+        class="bar bar--1"></span><span class="bar bar--1"></span></a>
+    <nav class="main-nav" id="navigationDrawer">
       <ul class="main-nav__list">
         <!-- link to root -->
         <li><a href="/" class="main-nav__link">Home</a></li>
@@ -49,7 +49,7 @@
     <section class="section-explore">
       <div class="explore">
         <h2 class="heading-secondary text-center">Explore Restaurant</h2>
-        <div class="explore__container">
+        <div class="explore__container" id="mainContent">
           <!-- <div class="explore__card">
             <div class="explore__city-box">
               <p class="explore__city">Medan</p>
