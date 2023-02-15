@@ -10,7 +10,9 @@ const app = new App({
   content: document.querySelector("#mainContent"),
 });
 
-console.log(app);
+window.addEventListener("hashchange", () => {
+  app.renderPage();
+});
 
 // content
 const exploreContainer = document.querySelector(".explore__container");
