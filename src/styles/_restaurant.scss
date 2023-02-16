@@ -1,0 +1,77 @@
+.resto {
+   width: 100%;
+   max-width: 80rem;
+   margin: 0 auto;
+   display: grid;
+   grid-template-columns: 1fr;
+   gap: 1.8rem 1.6rem;
+   padding: 1rem 3.2rem;
+
+   &__image {
+      width: 100%;
+      height: 40rem;
+      object-fit: cover;
+      border-radius: 1rem;
+   }
+
+   &__title {
+      font-size: 3.2rem;
+      font-weight: 400;
+      text-transform: uppercase;
+   }
+
+   &__detail {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+
+      & h3 {
+         font-size: 3rem;
+      }
+
+      & h4 {
+         font-size: 2.4rem;
+      }
+
+      & p {
+         font-size: 1.6rem;
+      }
+   }
+
+   &__review {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      box-shadow: 0 0 1px 0 rgba(var(--color-black-rgb), 0.5);
+
+      & p {
+         font-size: 1.6rem;
+      }
+   }
+
+   &__review-date {
+      font-size: 1rem;
+      font-weight: 400;
+      color: #333;
+      // make text italic
+      font-style: italic;
+   }
+
+   &__user {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+
+      & p {
+         font-size: 1.6rem;
+         font-weight: 700;
+      }
+   }
+
+   &__user-image {
+      width: 5rem;
+      height: 5rem;
+      border-radius: 50%;
+      object-fit: cover;
+   }
+}
