@@ -30,6 +30,7 @@ const Detail = {
         catagories: restaurant.categories,
         customerReviews: restaurant.customerReviews,
         menus: restaurant.menus,
+        rating: restaurant.rating,
       },
     });
   },
