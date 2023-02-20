@@ -1,6 +1,7 @@
 import CONFIG from "../../globals/config";
 
 const createRestaurantDetailTemplate = (resto) => `
+  <button onclick="history.back()" class="back-btn">Go Back</button>
   <h2 class="resto__title">${resto.name}</h2>
   <img src=${`${CONFIG.BASE_IMAGE_URL}/${resto.pictureId}`} alt="${resto.title}" class="resto__image"/>
   <div class="resto__detail">
@@ -54,4 +55,21 @@ const createRestaurantItemTemplate = (restaurant) => `
       </div>
 `;
 
-export { createRestaurantDetailTemplate, createRestaurantItemTemplate };
+const createLikeButtonTemplate = () => `
+  <button aria-label="like this movie" id="likeButton" class="like">
+    <i class="fa fa-heart-o" aria-hidden="true"></i>
+  </button>
+`;
+
+const createLikedButtonTemplate = () => `
+  <button aria-label="unlike this movie" id="likeButton" class="like">
+    <i class="fa fa-heart" aria-hidden="true"></i>
+  </button>
+`;
+
+export {
+  createRestaurantDetailTemplate,
+  createRestaurantItemTemplate,
+  createLikeButtonTemplate,
+  createLikedButtonTemplate,
+};
