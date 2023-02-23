@@ -24,6 +24,13 @@
     gap: 5rem;
 
     @media only screen and (max-width: 56.25em) {
+      display: none;
+    }
+  }
+
+  &.active &__list {
+    @media only screen and (max-width: 56.25em) {
+      display: flex;
       flex-direction: column;
       gap: 3rem;
     }
