@@ -1,0 +1,60 @@
+.form-review {
+   width: 100%;
+   max-width: 80rem;
+   margin: 0 auto;
+   padding: 1rem 3.2rem;
+
+   &__title {
+      font-size: 3.2rem;
+      font-weight: 400;
+      text-transform: uppercase;
+      margin-bottom: 2.4rem;
+      text-align: center;
+   }
+
+   &__container {
+      display: grid;
+      grid-template-columns: 1fr 3fr;
+      gap: 2.4rem;
+   }
+
+   &__label {
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: #000;
+      margin-bottom: 1.6rem;
+   }
+
+   &__input {
+      padding: 1.6rem 2.4rem;
+      font-size: 1.6rem;
+      font-weight: 400;
+      border: 1px solid #000;
+      border-radius: 0.4rem;
+      outline: none;
+      transition: all 0.2s;
+
+      &:focus {
+         border: 1px solid #000;
+      }
+   }
+
+   &__submit {
+      padding: 1rem 3rem;
+      font-size: 1.6rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      border: none;
+      margin-top: 2rem;
+      background-color: #000;
+      color: #fff;
+      cursor: pointer;
+      transition: all 0.2s;
+
+      &:hover {
+         background-color: #fff;
+         color: #000;
+         border: 1px solid #000;
+      }
+   }
+}

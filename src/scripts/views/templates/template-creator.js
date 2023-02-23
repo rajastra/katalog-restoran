@@ -28,10 +28,12 @@ const createRestaurantDetailTemplate = (resto) => `
       <div class="resto__review">
         <div class="resto__user">
             <img src="https://ui-avatars.com/api/?name=${review.name}" alt="user" class="resto__user-image" />
-            <p>${review.name}</p>
         </div>
-        <p class="resto__review-date">${review.date}</p>
-        <p>${review.review}</p>
+        <div class="resto__review-desc">
+          <p>${review.name}</p>
+          <p class="resto__review-date">${review.date}</p>
+          <p>${review.review}</p>
+        </div>
       </div>
         `
      )
@@ -67,9 +69,25 @@ const createLikedButtonTemplate = () => `
   </button>
 `;
 
+const createFormReviewTemplate = () => `
+  <form class="form-review">
+    <h2 class="form-review__title">Add Review</h2>
+    <div class="form-review__input">
+      <label for="name">Name</label>
+      <input type="text" id="name" name="name" placeholder="Your Name" required />
+    </div>
+    <div class="form-review__input">
+      <label for="review">Review</label>
+      <textarea id="review" name="review" placeholder="Your Review" required></textarea>
+    </div>
+    <button type="submit" class="form-review__submit">Submit</button>
+  </form>
+`;
+
 export {
   createRestaurantDetailTemplate,
   createRestaurantItemTemplate,
   createLikeButtonTemplate,
   createLikedButtonTemplate,
+  createFormReviewTemplate,
 };

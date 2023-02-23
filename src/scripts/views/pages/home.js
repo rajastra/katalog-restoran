@@ -73,8 +73,27 @@ const Home = {
   },
 
   async afterRender() {
-    const restaurants = await TheRestaurantSource.restaurantList();
     const restaurantContainer = document.querySelector(".explore__container");
+    // show loading spinner
+    restaurantContainer.innerHTML = `
+    <div class="loader">
+      <div class="loader__spinner"></div>
+    </div>
+    `;
+    const restaurants = await TheRestaurantSource.restaurantList();
+    if (restaurants.length === 0 || !restaurants) {
+      restaurantContainer.innerHTML = `
+      <div class="empty">
+        <h2 class="heading-secondary">No Restaurant Found</h2>
+        <p class="empty__description">Please try again later</p>
+      </div>
+      `;
+      return;
+    }
+    // hide loading spinner
+    if (restaurants.length > 0) {
+      restaurantContainer.innerHTML = "";
+    }
     restaurants.forEach((restaurant) => {
       restaurantContainer.innerHTML += createRestaurantItemTemplate(restaurant);
     });
