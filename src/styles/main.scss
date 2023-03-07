@@ -27,6 +27,9 @@ html {
 
 body {
   font-family: 'Roboto', sans-serif;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 .heading-primary,
@@ -79,7 +82,10 @@ body {
     height: 100%;
 
   }
+}
 
+main {
+  flex: 1;
 }
 
 .nama-resto {
