@@ -31,6 +31,8 @@ const FavoriteRestoIdb = {
   async deleteResto(id) {
     return (await dbPromise).delete(OBJECT_STORE_NAME, id);
   },
+
+  async searchResto(query) {},
 };
 
 export default FavoriteRestoIdb;
