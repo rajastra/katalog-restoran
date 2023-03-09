@@ -32,6 +32,7 @@ const FavoriteRestoIdb = {
     return (await dbPromise).delete(OBJECT_STORE_NAME, id);
   },
 
+  // eslint-disable-next-line no-unused-vars, no-empty-function
   async searchResto(query) {},
 };
 

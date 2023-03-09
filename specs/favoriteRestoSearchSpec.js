@@ -1,5 +1,5 @@
 import FavoriteRestoSearchPresenter from "../src/scripts/views/pages/liked-resto/favorite-reto-search-presenter";
-import favoriteRestoIdb from "../src/scripts/data/favorite-resto-idb";
+import FavoriteRestoIdb from "../src/scripts/data/favorite-resto-idb";
 
 describe("Searching resto", () => {
   let presenter;
@@ -22,9 +22,9 @@ describe("Searching resto", () => {
     `;
   };
   const constructPresenter = () => {
-    spyOn(favoriteRestoIdb, "searchResto");
+    spyOn(FavoriteRestoIdb, "searchResto");
     presenter = new FavoriteRestoSearchPresenter({
-      favoriteResto: favoriteRestoIdb,
+      favoriteResto: FavoriteRestoIdb,
     });
   };
 
@@ -34,15 +34,15 @@ describe("Searching resto", () => {
   });
 
   it("should be able to capture the query typed by the user", () => {
-    searchResto("film a");
+    searchResto("resto a");
 
-    expect(presenter.latestQuery).toEqual("film a");
+    expect(presenter.latestQuery).toEqual("resto a");
   });
 
   it("should ask the model to search for liked Resto", () => {
-    searchResto("film a");
+    searchResto("resto a");
 
-    expect(favoriteRestoIdb.searchResto).toHaveBeenCalledWith("film a");
+    expect(FavoriteRestoIdb.searchResto).toHaveBeenCalledWith("resto a");
   });
 
   it("should show the found restos", () => {
@@ -79,5 +79,39 @@ describe("Searching resto", () => {
     presenter._showFoundRestos([{ id: 1 }]);
 
     expect(document.querySelectorAll(".resto__title").item(0).textContent).toEqual("-");
+  });
+
+  it("should show the resto found by Favorite resto", (done) => {
+    document.getElementById("resto-search-container").addEventListener("restos:searched:updated", () => {
+      expect(document.querySelectorAll(".resto").length).toEqual(3);
+      done();
+    });
+
+    FavoriteRestoIdb.searchResto.withArgs("resto a").and.returnValues([
+      { id: 111, title: "resto abc" },
+      { id: 222, title: "ada juga resto abcde" },
+      { id: 333, title: "ini juga boleh resto a" },
+    ]);
+
+    searchResto("resto a");
+  });
+
+  it("should show the name of the resto found by Favorite resto", (done) => {
+    document.getElementById("resto-search-container").addEventListener("restos:searched:updated", () => {
+      const restoTitles = document.querySelectorAll(".resto__title");
+      expect(restoTitles.item(0).textContent).toEqual("resto abc");
+      expect(restoTitles.item(1).textContent).toEqual("ada juga resto abcde");
+      expect(restoTitles.item(2).textContent).toEqual("ini juga boleh resto a");
+
+      done();
+    });
+
+    FavoriteRestoIdb.searchResto.withArgs("resto a").and.returnValues([
+      { id: 111, title: "resto abc" },
+      { id: 222, title: "ada juga resto abcde" },
+      { id: 333, title: "ini juga boleh resto a" },
+    ]);
+
+    searchResto("resto a");
   });
 });

@@ -11,11 +11,14 @@ class FavoriteRestoSearchPresenter {
     });
   }
 
-  _searchResto(latestQuery) {
+  async _searchResto(latestQuery) {
     this._latestQuery = latestQuery;
-    this._favoriteResto.searchResto(this.latestQuery);
+    const foundRestos = await this._favoriteResto.searchResto(this.latestQuery);
+
+    this._showFoundRestos(foundRestos);
   }
 
+  // eslint-disable-next-line class-methods-use-this
   _showFoundRestos(movies) {
     const html = movies.reduce(
       (carry, movie) => carry.concat(`<li class="resto"><span class="resto__title">${movie.title || "-"}</span></li>`),
@@ -23,6 +26,7 @@ class FavoriteRestoSearchPresenter {
     );
 
     document.querySelector(".restos").innerHTML = html;
+    document.getElementById("resto-search-container").dispatchEvent(new Event("restos:searched:updated"));
   }
 
   get latestQuery() {
