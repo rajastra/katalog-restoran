@@ -15,7 +15,7 @@ describe("Searching resto", () => {
       <div id="resto-search-container">
         <input id="query" type="text">
         <div class="resto-result-container">
-          <ul class="resto">
+          <ul class="restos">
           </ul>
         </div>
       </div>
@@ -43,5 +43,41 @@ describe("Searching resto", () => {
     searchResto("film a");
 
     expect(favoriteRestoIdb.searchResto).toHaveBeenCalledWith("film a");
+  });
+
+  it("should show the found restos", () => {
+    presenter._showFoundRestos([{ id: 1 }]);
+    expect(document.querySelectorAll(".resto").length).toEqual(1);
+
+    presenter._showFoundRestos([
+      { id: 1, title: "Satu" },
+      { id: 2, title: "Dua" },
+    ]);
+    expect(document.querySelectorAll(".resto").length).toEqual(2);
+  });
+
+  it("should show the title of the found restos", () => {
+    presenter._showFoundRestos([{ id: 1, title: "Satu" }]);
+    expect(document.querySelectorAll(".resto__title").item(0).textContent).toEqual("Satu");
+  });
+
+  it("should show the title of the found restos", () => {
+    presenter._showFoundRestos([{ id: 1, title: "Satu" }]);
+    expect(document.querySelectorAll(".resto__title").item(0).textContent).toEqual("Satu");
+
+    presenter._showFoundRestos([
+      { id: 1, title: "Satu" },
+      { id: 2, title: "Dua" },
+    ]);
+
+    const restoTitles = document.querySelectorAll(".resto__title");
+    expect(restoTitles.item(0).textContent).toEqual("Satu");
+    expect(restoTitles.item(1).textContent).toEqual("Dua");
+  });
+
+  it("should show - for found resto without title", () => {
+    presenter._showFoundRestos([{ id: 1 }]);
+
+    expect(document.querySelectorAll(".resto__title").item(0).textContent).toEqual("-");
   });
 });

@@ -16,6 +16,15 @@ class FavoriteRestoSearchPresenter {
     this._favoriteResto.searchResto(this.latestQuery);
   }
 
+  _showFoundRestos(movies) {
+    const html = movies.reduce(
+      (carry, movie) => carry.concat(`<li class="resto"><span class="resto__title">${movie.title || "-"}</span></li>`),
+      ""
+    );
+
+    document.querySelector(".restos").innerHTML = html;
+  }
+
   get latestQuery() {
     return this._latestQuery;
   }
