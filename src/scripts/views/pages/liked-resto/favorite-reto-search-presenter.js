@@ -12,18 +12,29 @@ class FavoriteRestoSearchPresenter {
   }
 
   async _searchResto(latestQuery) {
-    this._latestQuery = latestQuery;
-    const foundRestos = await this._favoriteResto.searchResto(this.latestQuery);
+    this._latestQuery = latestQuery.trim();
+    let foundRestos;
+    if (this.latestQuery.length > 0) {
+      foundRestos = await this._favoriteResto.searchResto(this.latestQuery);
+    } else {
+      foundRestos = await this._favoriteResto.getAllResto();
+    }
 
     this._showFoundRestos(foundRestos);
   }
 
   // eslint-disable-next-line class-methods-use-this
-  _showFoundRestos(movies) {
-    const html = movies.reduce(
-      (carry, movie) => carry.concat(`<li class="resto"><span class="resto__title">${movie.title || "-"}</span></li>`),
-      ""
-    );
+  _showFoundRestos(restos) {
+    let html;
+    if (restos.length > 0) {
+      html = restos.reduce(
+        (carry, resto) =>
+          carry.concat(`<li class="resto"><span class="resto__title">${resto.title || "-"}</span></li>`),
+        ""
+      );
+    } else {
+      html = '<div class="restos__not__found">Resto tidak ditemukan</div>';
+    }
 
     document.querySelector(".restos").innerHTML = html;
     document.getElementById("resto-search-container").dispatchEvent(new Event("restos:searched:updated"));

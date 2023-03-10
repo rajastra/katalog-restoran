@@ -36,9 +36,19 @@ const FavoriteRestoArray = {
     // eslint-disable-next-line eqeqeq
     favoriteResto = favoriteResto.filter((resto) => resto.id != id);
   },
+
+  searchResto(query) {
+    return this.getAllResto().filter((resto) => {
+      const loweredCaseRestoTitle = (resto.title || "-").toLowerCase();
+      const jammedRestoTitle = loweredCaseRestoTitle.replace(/\s/g, "");
+      const loweredCaseQuery = query.toLowerCase();
+      const jammedQuery = loweredCaseQuery.replace(/\s/g, "");
+      return jammedRestoTitle.indexOf(jammedQuery) !== -1;
+    });
+  },
 };
 
-describe("Favorite Movie Array Contract Test Implementation", () => {
+describe("Favorite resto Array Contract Test Implementation", () => {
   // eslint-disable-next-line no-return-assign
   afterEach(() => (favoriteResto = []));
 
