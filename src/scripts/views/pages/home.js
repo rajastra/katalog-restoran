@@ -17,7 +17,10 @@ const Home = {
           and start savoring the flavors of the world!</p>
       </div>
       <div class="hero__img-box">
-        <img src="./images/heros/hero-image_2.jpg" alt="hero image" class="hero__image">
+        <picture>  
+          <source media="(max-width: 600px)" srcset="./images/hero-image_3-small.jpg">
+             <img src="./images/hero-image_3-large.jpg" alt="hero image" class="hero__image">
+        </picture>
       </div>
     </div>
   </section>

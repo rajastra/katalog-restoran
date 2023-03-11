@@ -3,7 +3,7 @@ import CONFIG from "../../globals/config";
 const createRestaurantDetailTemplate = (resto) => `
   <button onclick="history.back()" class="back-btn">Go Back</button>
   <h2 class="resto__title">${resto.name}</h2>
-  <img src=${`${CONFIG.BASE_IMAGE_URL}/${resto.pictureId}`} alt="${resto.title}" class="resto__image"/>
+  <img src=${`${CONFIG.BASE_IMAGE_URL}/${resto.pictureId}`} alt="${resto.title}" class="resto__image lazyload"/>
   <div class="resto__detail">
     <h3>Information</h3>
     <h4>City</h4>
@@ -27,7 +27,7 @@ const createRestaurantDetailTemplate = (resto) => `
        (review) => `
       <div class="resto__review">
         <div class="resto__user">
-            <img src="https://ui-avatars.com/api/?name=${review.name}" alt="user" class="resto__user-image" />
+            <img src="https://ui-avatars.com/api/?name=${review.name}" alt="user" class="resto__user-image lazyload" />
         </div>
         <div class="resto__review-desc">
           <p>${review.name}</p>
@@ -49,7 +49,7 @@ const createRestaurantItemTemplate = (restaurant) => `
          <div class="explore__img-box">
          <img src=${`${CONFIG.BASE_IMAGE_URL}/${restaurant.pictureId || "-"}`} alt="${
   restaurant.city || "-"
-}" class="explore__image">
+}" class="explore__image lazyload">
       </div>
       <div class="explore__text-box">
          <p class="explore__rating">Rating : ${restaurant.rating}</p>
