@@ -13,6 +13,7 @@ class FavoriteRestoSearchPresenter {
 
   async _searchResto(latestQuery) {
     this._latestQuery = latestQuery.trim();
+    console.log(this._latestQuery);
     let foundRestos;
     if (this.latestQuery.length > 0) {
       foundRestos = await this._favoriteResto.searchResto(this.latestQuery);

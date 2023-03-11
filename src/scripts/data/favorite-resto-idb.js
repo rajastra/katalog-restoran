@@ -35,7 +35,7 @@ const FavoriteRestoIdb = {
   // eslint-disable-next-line no-unused-vars, no-empty-function
   async searchResto(query) {
     return (await this.getAllResto()).filter((resto) => {
-      const loweredCaseRestoTitle = (resto.title || "-").toLowerCase();
+      const loweredCaseRestoTitle = (resto.name || "-").toLowerCase();
       const jammedRestoTitle = loweredCaseRestoTitle.replace(/\s/g, "");
       const loweredCaseQuery = query.toLowerCase();
       const jammedQuery = loweredCaseQuery.replace(/\s/g, "");
