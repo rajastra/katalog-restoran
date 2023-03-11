@@ -47,12 +47,16 @@ const createRestaurantItemTemplate = (restaurant) => `
          <p class="explore__city">${restaurant.city}</p>
          </div>
          <div class="explore__img-box">
-         <img src=${`${CONFIG.BASE_IMAGE_URL}/${restaurant.pictureId}`} alt="${restaurant.city}" class="explore__image">
+         <img src=${`${CONFIG.BASE_IMAGE_URL}/${restaurant.pictureId || "-"}`} alt="${
+  restaurant.city || "-"
+}" class="explore__image">
       </div>
       <div class="explore__text-box">
          <p class="explore__rating">Rating : ${restaurant.rating}</p>
-         <p class="explore__name"><a href="/#/detail/${restaurant.id}">${restaurant.name}</a></p>
-         <p class="explore__description">${restaurant.description}</p>
+         <p class="explore__name resto__title"><a href="/#/detail/${restaurant.id || "-"}">${
+  restaurant.name || "-"
+}</a></p>
+         <p class="explore__description">${restaurant.description || "-"}</p>
          </div>
       </div>
 `;

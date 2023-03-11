@@ -44,12 +44,12 @@ describe("Searching resto", () => {
     });
 
     it("should show the title of the found restos", () => {
-      presenter._showFoundRestos([{ id: 1, title: "Satu" }]);
+      presenter._showFoundRestos([{ id: 1, name: "Satu" }]);
       expect(document.querySelectorAll(".resto__title").item(0).textContent).toEqual("Satu");
 
       presenter._showFoundRestos([
-        { id: 1, title: "Satu" },
-        { id: 2, title: "Dua" },
+        { id: 1, name: "Satu" },
+        { id: 2, name: "Dua" },
       ]);
 
       const restoTitles = document.querySelectorAll(".resto__title");
@@ -59,14 +59,14 @@ describe("Searching resto", () => {
 
     it("should show the resto found by Favorite resto", (done) => {
       document.getElementById("resto-search-container").addEventListener("restos:searched:updated", () => {
-        expect(document.querySelectorAll(".resto").length).toEqual(3);
+        expect(document.querySelectorAll(".resto-item").length).toEqual(3);
         done();
       });
 
       favoriteResto.searchResto.withArgs("resto a").and.returnValues([
-        { id: 111, title: "resto abc" },
-        { id: 222, title: "ada juga resto abcde" },
-        { id: 333, title: "ini juga boleh resto a" },
+        { id: 111, name: "resto abc" },
+        { id: 222, name: "ada juga resto abcde" },
+        { id: 333, name: "ini juga boleh resto a" },
       ]);
 
       searchResto("resto a");
@@ -83,9 +83,9 @@ describe("Searching resto", () => {
       });
 
       favoriteResto.searchResto.withArgs("resto a").and.returnValues([
-        { id: 111, title: "resto abc" },
-        { id: 222, title: "ada juga resto abcde" },
-        { id: 333, title: "ini juga boleh resto a" },
+        { id: 111, name: "resto abc" },
+        { id: 222, name: "ada juga resto abcde" },
+        { id: 333, name: "ini juga boleh resto a" },
       ]);
 
       searchResto("resto a");
@@ -119,7 +119,7 @@ describe("Searching resto", () => {
   describe("When no favorite resto could be found", () => {
     it("should show the empty message", (done) => {
       document.getElementById("resto-search-container").addEventListener("restos:searched:updated", () => {
-        expect(document.querySelectorAll(".restos__not__found").length).toEqual(1);
+        expect(document.querySelectorAll(".resto-item__not__found").length).toEqual(1);
         done();
       });
 
@@ -129,7 +129,7 @@ describe("Searching resto", () => {
     });
     it("should not show any resto", (done) => {
       document.getElementById("resto-search-container").addEventListener("restos:searched:updated", () => {
-        expect(document.querySelectorAll(".resto").length).toEqual(0);
+        expect(document.querySelectorAll(".resto-item").length).toEqual(0);
         done();
       });
       favoriteResto.searchResto.withArgs("resto a").and.returnValues([]);
