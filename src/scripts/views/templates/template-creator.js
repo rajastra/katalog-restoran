@@ -42,7 +42,7 @@ const createRestaurantDetailTemplate = (resto) => `
 `;
 
 const createRestaurantItemTemplate = (restaurant) => `
-      <div class="explore__card">
+      <div class="resto-item">
          <div class="explore__city-box">
          <p class="explore__city">${restaurant.city}</p>
          </div>
