@@ -1,15 +1,15 @@
 // const assert = require("assert");
 
-// Feature("Liking Resto");
+Feature("UnLiking Resto");
 
-// Before(({ I }) => {
-//   I.amOnPage("/#/favorite");
-// });
+Before(({ I }) => {
+  I.amOnPage("/#/favorite");
+});
 
-// Scenario("showing empty liked resto", ({ I }) => {
-//   I.seeElement("#query");
-//   I.see("Tidak ada resto untuk ditampilkan", ".resto-item__not__found");
-// });
+Scenario("showing liked resto", ({ I }) => {
+  I.seeElement("#query");
+  I.see("Tidak ada resto untuk ditampilkan", ".resto-item__not__found");
+});
 
 // Scenario("liking one resto", async ({ I }) => {
 //   I.see("Tidak ada resto untuk ditampilkan", ".resto-item__not__found");
