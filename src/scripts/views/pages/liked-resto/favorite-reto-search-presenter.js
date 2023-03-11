@@ -25,7 +25,7 @@ class FavoriteRestoSearchPresenter {
 
   // eslint-disable-next-line class-methods-use-this
   _showFoundRestos(restos) {
-    this._view.showResto(restos);
+    this._view.showFavoriteResto(restos);
   }
 
   get latestQuery() {

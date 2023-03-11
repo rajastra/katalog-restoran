@@ -157,6 +157,20 @@ main {
   }
 }
 
+.restos {
+  max-width: 130rem;
+  margin-inline: auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(35rem, 1fr));
+  grid-gap: 7rem;
+  justify-items: center;
+  padding: 3vw;
+
+  @media only screen and (max-width: 31.25em) {
+    grid-template-columns: 1fr;
+  }
+}
+
 .explore {
   &__container {
     max-width: 130rem;

@@ -2,7 +2,6 @@ class FavoriteRestoShowPresenter {
   constructor({ view, favoriteResto }) {
     this._view = view;
     this._favoriteResto = favoriteResto;
-
     this._showFavoriteResto();
   }
 
